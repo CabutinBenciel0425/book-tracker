@@ -1,6 +1,10 @@
-import "./styles.css";
+import { useAppContext } from "../hooks/useAppContext";
+import "../styles/styles.css";
 
 function App() {
+  const { state } = useAppContext();
+
+  console.log(state);
   return (
     <div>
       A book tracker application built with React, TypeScript, Tailwind CSS, and

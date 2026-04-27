@@ -1,4 +1,4 @@
-@import url("https://fonts.googleapis.com/css2?family=Handlee&family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Google+Sans+Flex:opsz,wght@6..144,1..1000&display=swap");
 @import "tailwindcss";
 @layer base {
   *,
@@ -16,18 +16,17 @@
   }
 
   html {
-    font-family: "Handlee", sans-serif;
-    /* color: #333; */
+    font-family: "Google Sans Flex", sans-serif;
   }
 
   body {
-    background-color: #222f3e;
+    background-color: #f2f3f4;
     display: flex;
     align-items: center;
     justify-content: center;
     flex-direction: column;
     height: 100vh;
-    color: #fff;
+    color: #000;
   }
 
   #root {
@@ -37,4 +36,10 @@
     align-items: center;
     justify-content: center;
   }
+}
+
+@theme {
+  --color-main-accent: #003554;
+  --color-main-accent-hover: #00498e;
+  --color-secondary-accent: #006494;
 }
