@@ -38,5 +38,12 @@ export function useAppContext() {
     });
   }
 
-  return { state, dispatch, addBook, deleteBook, updateBook, toggleFavorite };
+  return {
+    state,
+    dispatch,
+    addBook,
+    deleteBook,
+    updateBook,
+    toggleFavorite,
+  };
 }

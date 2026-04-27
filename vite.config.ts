@@ -10,4 +10,13 @@ export default defineConfig({
     babel({ presets: [reactCompilerPreset()] }),
     tailwindcss(),
   ],
+  server: {
+    proxy: {
+      "/api/quotes": {
+        target: "https://api.api-ninjas.com",
+        changeOrigin: true,
+        rewrite: (path) => path.replace(/^\/api\/quotes/, "/v1/quotes"),
+      },
+    },
+  },
 });

@@ -39,6 +39,7 @@
 }
 
 @theme {
+  --color-bg-sidebar: #051923;
   --color-main-accent: #003554;
   --color-main-accent-hover: #00498e;
   --color-secondary-accent: #006494;
