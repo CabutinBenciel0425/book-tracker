@@ -23,10 +23,8 @@ function MiniQuote() {
 
   return (
     <div className="h-full w-full flex flex-col justify-end items-center gap-4 p-2">
-      <h2 className="text-neutral-500">Quote of the day</h2>
-
-      <div className="border border-white p-3 text-center flex flex-col items-center justify-around rounded-md min-h-[120px]">
-        <BiSolidQuoteAltLeft className="text-4xl mb-2" />
+      <div className="border border-white p-3 text-center flex flex-col items-center justify-between rounded-md min-h-70">
+        <BiSolidQuoteAltLeft className="text-4xl mb-2 h-2/6" />
 
         <AnimatePresence mode="wait">
           {loading ? (
@@ -44,10 +42,11 @@ function MiniQuote() {
               initial={{ opacity: 0, y: 10, scale: 0.98 }}
               animate={{ opacity: 1, y: 0, scale: 1 }}
               exit={{ opacity: 0, y: -10, scale: 0.98 }}
-              transition={{ duration: 0.5, ease: "easeInOut" }}
+              transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
+              className="h-4/6 flex flex-col justify-around"
             >
               <p>{quote.quote}</p>
-              <span className="block mt-1 text-sm">- {quote.author}</span>
+              <span className="block mt-4 text-sm">- {quote.author}</span>
             </motion.div>
           ) : (
             <motion.p
