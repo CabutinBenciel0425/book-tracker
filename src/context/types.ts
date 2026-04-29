@@ -9,7 +9,8 @@ export type Action =
   | { type: "ADD_BOOK"; payload: Book }
   | { type: "DELETE_BOOK"; payload: string }
   | { type: "UPDATE_BOOK"; payload: Book }
-  | { type: "TOGGLE_FAVORITE"; payload: string };
+  | { type: "TOGGLE_FAVORITE"; payload: string }
+  | { type: "TOGGLE_RATING"; payload: { id: string; rating: number } };
 
 export type AppContextType = {
   state: AppState;

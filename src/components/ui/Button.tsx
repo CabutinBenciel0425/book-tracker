@@ -1,10 +1,19 @@
 import { IoSearch } from "react-icons/io5";
 import { IoMdAdd } from "react-icons/io";
+import { LuPencil } from "react-icons/lu";
+import { FaRegTrashCan } from "react-icons/fa6";
+import { FaRegEye } from "react-icons/fa";
 
 type ButtonType = {
   className?: string;
   onClick: () => void;
-  typeName: "search" | "addBook" | "filter";
+  typeName:
+    | "search"
+    | "addBook"
+    | "filter"
+    | "viewBook"
+    | "updateBook"
+    | "deleteBook";
   children?: string;
 };
 
@@ -13,6 +22,9 @@ function Button({ className, onClick, typeName, children }: ButtonType) {
     search: { icon: <IoSearch /> },
     addBook: { icon: <IoMdAdd /> },
     filter: { icon: "" },
+    viewBook: { icon: <FaRegEye /> },
+    updateBook: { icon: <LuPencil /> },
+    deleteBook: { icon: <FaRegTrashCan /> },
   };
 
   return (

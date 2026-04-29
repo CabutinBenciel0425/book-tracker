@@ -1,17 +1,18 @@
 import Button from "../../components/ui/Button";
 import Filters from "../../components/ui/Filters";
 import Input from "../../components/ui/Input";
-// import { useAppContext } from "../../hooks/useAppContext";
+import { useAppContext } from "../../hooks/useAppContext";
+import BookItem from "./BookItem";
 
 function BooksPage() {
-  // const { state } = useAppContext();
+  const { state } = useAppContext();
 
   function handleSubmit() {
     console.log("click search");
   }
 
   return (
-    <div className="w-full h-full flex flex-col gap-10">
+    <div className="w-full h-full flex flex-col gap-15">
       <div className="w-full flex flex-row items-center justify-between">
         <div className="px-5 flex flex-col gap-2">
           <h1 className="text-3xl font-semibold">My Books</h1>
@@ -41,11 +42,26 @@ function BooksPage() {
           </Button>
         </div>
       </div>
-      <Filters />
 
-      {/* {state.books.map((book) => (
-        <p>{book.title}</p>
-      ))} */}
+      <div>
+        <Filters />
+      </div>
+
+      <div className="flex flex-col">
+        <div className="grid grid-cols-[60px_2fr_1.5fr_1fr_1fr_1fr_120px] text-sm text-gray-500 px-4 gap-5">
+          <span></span>
+          <span>Book</span>
+          <span>Author</span>
+          <span>Category</span>
+          <span>Status</span>
+          <span>Rating</span>
+          <span>Actions</span>
+        </div>
+
+        {state.books.map((book) => (
+          <BookItem book={book} />
+        ))}
+      </div>
     </div>
   );
 }

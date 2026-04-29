@@ -32,6 +32,16 @@ export function reducer(state: AppState, action: Action): AppState {
         ),
       };
 
+    case "TOGGLE_RATING":
+      return {
+        ...state,
+        books: state.books.map((book) =>
+          book.id === action.payload.id
+            ? { ...book, rating: action.payload.rating }
+            : book,
+        ),
+      };
+
     default:
       return state;
   }

@@ -38,6 +38,16 @@ export function useAppContext() {
     });
   }
 
+  function toggleRating(id: string, rating: number) {
+    dispatch({
+      type: "TOGGLE_RATING",
+      payload: {
+        id,
+        rating,
+      },
+    });
+  }
+
   return {
     state,
     dispatch,
@@ -45,5 +55,6 @@ export function useAppContext() {
     deleteBook,
     updateBook,
     toggleFavorite,
+    toggleRating,
   };
 }

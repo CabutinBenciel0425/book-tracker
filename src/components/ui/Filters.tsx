@@ -17,7 +17,7 @@ function Filters() {
           <Button
             onClick={() => handleFilterButton(type)}
             typeName="filter"
-            className={`text-lg px-6 py-1 cursor-pointer rounded-md ${activeFilterType === type ? "bg-main-accent text-neutral-100 border-2 border-main-accent" : "bg-transparent border-2 border-main-border"}`}
+            className={`shrink-0 text-lg px-6 py-1 cursor-pointer rounded-md ${activeFilterType === type ? "bg-main-accent text-neutral-100 border-2 border-main-accent" : "bg-transparent border-2 border-main-border"}`}
           >
             {`${capitalizeFirstLetter(type)} (10)`}
           </Button>
