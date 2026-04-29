@@ -9,12 +9,6 @@ import { useFilter } from "../../hooks/useFilter";
 export type FilterTypes = "all" | "reading" | "completed" | "to-read";
 
 export type SortOptionTypes = "recent" | "oldest";
-export type BookCountsType = {
-  all: number;
-  completed: number;
-  reading: number;
-  "to-read": number;
-};
 
 function BooksPage() {
   const { state } = useAppContext();

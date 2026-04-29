@@ -14,7 +14,7 @@ export function useFilter(
     "to-read": books.filter((b) => b.status === "to-read").length,
   };
 
-  let result = books;
+  let result = [...books];
 
   if (filterType !== "all") {
     result = result.filter((res) => res.status === filterType);

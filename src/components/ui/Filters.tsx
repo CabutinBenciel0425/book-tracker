@@ -2,7 +2,6 @@ import React, { type SetStateAction } from "react";
 import { capitalizeFirstLetter } from "../../utils/helpers";
 import Button from "./Button";
 import type {
-  BookCountsType,
   FilterTypes,
   SortOptionTypes,
 } from "../../features/books/BooksPage";
@@ -14,7 +13,7 @@ type FiltersPropsType = {
   setSortOption: React.Dispatch<SetStateAction<"recent" | "oldest">>;
   filterType: FilterTypes;
   sortOption: SortOptionTypes;
-  bookCounts: BookCountsType;
+  bookCounts: Record<FilterTypes, number>;
 };
 
 function Filters({
