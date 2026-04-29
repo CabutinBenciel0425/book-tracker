@@ -1,11 +1,41 @@
+import { useState } from "react";
 import Button from "../../components/ui/Button";
 import Filters from "../../components/ui/Filters";
 import Input from "../../components/ui/Input";
 import { useAppContext } from "../../hooks/useAppContext";
 import BookItem from "./BookItem";
 
+export type FilterTypes = "all" | "reading" | "completed" | "to-read";
+
+export type SortOptionTypes = "recent" | "oldest";
+
 function BooksPage() {
   const { state } = useAppContext();
+
+  const [searchInput, setSearchInput] = useState<string>("");
+  const [filterType, setFilterType] = useState<FilterTypes>("all");
+
+  const [sortOption, setSortOption] = useState<SortOptionTypes>("recent");
+
+  let result = state.books;
+
+  if (filterType !== "all") {
+    result = result.filter((res) => res.status === filterType);
+  }
+
+  if (searchInput.trim().length > 0) {
+    result = result.filter((res) =>
+      res.title.toLowerCase().includes(searchInput.toLocaleLowerCase()),
+    );
+  }
+
+  result = result.sort((a, b) => {
+    if (sortOption === "recent") {
+      return new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime();
+    } else {
+      return new Date(a.createdAt).getTime() - new Date(b.createdAt).getTime();
+    }
+  });
 
   function handleSubmit() {
     console.log("click search");
@@ -24,6 +54,8 @@ function BooksPage() {
               type="text"
               className="w-full bg-transparent pl-5 pr-10 py-2 text-lg border-2 border-main-border outline-none focus:border-main-border-focus rounded-lg transition-all duration-200 ease-in"
               placeholder="Search your books here..."
+              value={searchInput}
+              onChange={(e) => setSearchInput(e.target.value)}
             />
 
             <Button
@@ -44,7 +76,12 @@ function BooksPage() {
       </div>
 
       <div>
-        <Filters />
+        <Filters
+          setFilterType={setFilterType}
+          setSortOption={setSortOption}
+          filterType={filterType}
+          sortOption={sortOption}
+        />
       </div>
 
       <div className="flex flex-col">
@@ -58,7 +95,7 @@ function BooksPage() {
           <span>Actions</span>
         </div>
 
-        {state.books.map((book) => (
+        {result.map((book) => (
           <BookItem book={book} />
         ))}
       </div>

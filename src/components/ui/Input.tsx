@@ -5,11 +5,26 @@ type InputType = {
   className: string;
   placeholder?: string;
   children?: React.ReactNode;
+  value: string;
+  onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
 };
 
-function Input({ type, className, placeholder, children }: InputType) {
+function Input({
+  type,
+  className,
+  placeholder,
+  children,
+  value,
+  onChange,
+}: InputType) {
   return (
-    <input type={type} className={className} placeholder={placeholder}>
+    <input
+      type={type}
+      className={className}
+      placeholder={placeholder}
+      value={value}
+      onChange={onChange}
+    >
       {children}
     </input>
   );
