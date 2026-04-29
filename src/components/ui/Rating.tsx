@@ -1,7 +1,6 @@
 import { IoIosStar } from "react-icons/io";
 import { IoIosStarOutline } from "react-icons/io";
 import { useAppContext } from "../../hooks/useAppContext";
-import { useEffect } from "react";
 
 type RatingTypes = {
   starLength?: number;
@@ -17,10 +16,6 @@ function Rating({ starLength = 5, id }: RatingTypes) {
   function handleClickRating(index: number) {
     toggleRating(id, index + 1);
   }
-
-  useEffect(() => {
-    console.log(state.books);
-  }, [state.books]);
 
   return (
     <div className="flex flex-row gap-1 text-xl">

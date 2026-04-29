@@ -4,10 +4,17 @@ import Filters from "../../components/ui/Filters";
 import Input from "../../components/ui/Input";
 import { useAppContext } from "../../hooks/useAppContext";
 import BookItem from "./BookItem";
+import { useFilter } from "../../hooks/useFilter";
 
 export type FilterTypes = "all" | "reading" | "completed" | "to-read";
 
 export type SortOptionTypes = "recent" | "oldest";
+export type BookCountsType = {
+  all: number;
+  completed: number;
+  reading: number;
+  "to-read": number;
+};
 
 function BooksPage() {
   const { state } = useAppContext();
@@ -17,25 +24,12 @@ function BooksPage() {
 
   const [sortOption, setSortOption] = useState<SortOptionTypes>("recent");
 
-  let result = state.books;
-
-  if (filterType !== "all") {
-    result = result.filter((res) => res.status === filterType);
-  }
-
-  if (searchInput.trim().length > 0) {
-    result = result.filter((res) =>
-      res.title.toLowerCase().includes(searchInput.toLocaleLowerCase()),
-    );
-  }
-
-  result = result.sort((a, b) => {
-    if (sortOption === "recent") {
-      return new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime();
-    } else {
-      return new Date(a.createdAt).getTime() - new Date(b.createdAt).getTime();
-    }
-  });
+  const { result, bookCounts } = useFilter(
+    state.books,
+    searchInput,
+    filterType,
+    sortOption,
+  );
 
   function handleSubmit() {
     console.log("click search");
@@ -81,6 +75,7 @@ function BooksPage() {
           setSortOption={setSortOption}
           filterType={filterType}
           sortOption={sortOption}
+          bookCounts={bookCounts}
         />
       </div>
 
@@ -96,7 +91,7 @@ function BooksPage() {
         </div>
 
         {result.map((book) => (
-          <BookItem book={book} />
+          <BookItem book={book} key={book.id} />
         ))}
       </div>
     </div>

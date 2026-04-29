@@ -1,5 +1,4 @@
 import { BrowserRouter, Route, Routes } from "react-router-dom";
-import { useAppContext } from "../hooks/useAppContext";
 import "../styles/styles.css";
 import Layout from "../components/layout/Layout";
 import DashboardPage from "../features/dashboard/DashboardPage";
@@ -10,9 +9,6 @@ import SettingsPage from "../features/settings/SettingsPage";
 import BooksPage from "../features/books/BooksPage";
 
 function App() {
-  const { state } = useAppContext();
-
-  console.log(state);
   return (
     <BrowserRouter>
       <Routes>

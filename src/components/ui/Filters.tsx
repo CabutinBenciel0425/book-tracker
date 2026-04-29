@@ -2,6 +2,7 @@ import React, { type SetStateAction } from "react";
 import { capitalizeFirstLetter } from "../../utils/helpers";
 import Button from "./Button";
 import type {
+  BookCountsType,
   FilterTypes,
   SortOptionTypes,
 } from "../../features/books/BooksPage";
@@ -13,6 +14,7 @@ type FiltersPropsType = {
   setSortOption: React.Dispatch<SetStateAction<"recent" | "oldest">>;
   filterType: FilterTypes;
   sortOption: SortOptionTypes;
+  bookCounts: BookCountsType;
 };
 
 function Filters({
@@ -20,6 +22,7 @@ function Filters({
   setSortOption,
   filterType,
   sortOption,
+  bookCounts,
 }: FiltersPropsType) {
   const filterButtons: FilterTypes[] = [
     "all",
@@ -40,8 +43,9 @@ function Filters({
             onClick={() => handleFilterButton(type)}
             typeName="filter"
             className={`shrink-0 text-lg px-6 py-1 cursor-pointer rounded-md ${filterType === type ? "bg-main-accent text-neutral-100 border-2 border-main-accent" : "bg-transparent border-2 border-main-border"}`}
+            key={type}
           >
-            {`${capitalizeFirstLetter(type)} (10)`}
+            {`${capitalizeFirstLetter(type)} (${bookCounts[type]})`}
           </Button>
         ))}
       </div>
