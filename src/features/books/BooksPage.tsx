@@ -1,10 +1,12 @@
 import { useState } from "react";
+import { useAppContext } from "../../hooks/useAppContext";
+import { useFilter } from "../../hooks/useFilter";
 import Button from "../../components/ui/Button";
 import Filters from "../../components/ui/Filters";
 import Input from "../../components/ui/Input";
-import { useAppContext } from "../../hooks/useAppContext";
 import BookItem from "./BookItem";
-import { useFilter } from "../../hooks/useFilter";
+import AddUpdateModal from "../../components/ui/AddUpdateModal";
+import BaseModal from "../../components/ui/BaseModal";
 
 export type FilterTypes = "all" | "reading" | "completed" | "to-read";
 
@@ -12,7 +14,7 @@ export type SortOptionTypes = "recent" | "oldest";
 
 function BooksPage() {
   const { state } = useAppContext();
-
+  const [isModalOpen, setIsModalOpen] = useState(false);
   const [searchInput, setSearchInput] = useState<string>("");
   const [filterType, setFilterType] = useState<FilterTypes>("all");
 
@@ -25,8 +27,8 @@ function BooksPage() {
     sortOption,
   );
 
-  function handleSubmit() {
-    console.log("click search");
+  function handleAddBook() {
+    setIsModalOpen(true);
   }
 
   return (
@@ -47,7 +49,6 @@ function BooksPage() {
             />
 
             <Button
-              onClick={handleSubmit}
               typeName="search"
               className="absolute right-3 top-1/2 -translate-y-1/2 text-xl text-main-border hover:text-main-border-focus transition-all duration-200 ease-in cursor-pointer"
             />
@@ -55,7 +56,7 @@ function BooksPage() {
 
           <Button
             className="shrink-0 px-4 py-2 bg-main-accent text-neutral-100 cursor-pointer flex flex-row items-center justify-center gap-2 rounded-lg hover:bg-main-accent-hover active:scale-96 transition-all duration-200 ease-in"
-            onClick={() => console.log("Add Book")}
+            onClick={handleAddBook}
             typeName="addBook"
           >
             Add Book
@@ -88,6 +89,12 @@ function BooksPage() {
           <BookItem book={book} key={book.id} />
         ))}
       </div>
+
+      {isModalOpen && (
+        <BaseModal onClose={() => setIsModalOpen(false)}>
+          <AddUpdateModal setIsModalOpen={setIsModalOpen} />
+        </BaseModal>
+      )}
     </div>
   );
 }

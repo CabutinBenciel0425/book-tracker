@@ -6,14 +6,16 @@ import { FaRegEye } from "react-icons/fa";
 
 type ButtonType = {
   className?: string;
-  onClick: () => void;
+  onClick?: () => void;
   typeName:
     | "search"
     | "addBook"
     | "filter"
     | "viewBook"
     | "updateBook"
-    | "deleteBook";
+    | "deleteBook"
+    | "addBookModal"
+    | "cancelBookModal";
   children?: string;
 };
 
@@ -25,6 +27,8 @@ function Button({ className, onClick, typeName, children }: ButtonType) {
     viewBook: { icon: <FaRegEye /> },
     updateBook: { icon: <LuPencil /> },
     deleteBook: { icon: <FaRegTrashCan /> },
+    addBookModal: { icon: "" },
+    cancelBookModal: { icon: "" },
   };
 
   return (

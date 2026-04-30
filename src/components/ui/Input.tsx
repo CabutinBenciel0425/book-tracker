@@ -4,18 +4,18 @@ type InputType = {
   type: string;
   className: string;
   placeholder?: string;
-  children?: React.ReactNode;
   value: string;
   onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
+  id?: string;
 };
 
 function Input({
   type,
   className,
   placeholder,
-  children,
   value,
   onChange,
+  id,
 }: InputType) {
   return (
     <input
@@ -24,9 +24,8 @@ function Input({
       placeholder={placeholder}
       value={value}
       onChange={onChange}
-    >
-      {children}
-    </input>
+      id={id}
+    />
   );
 }
 
