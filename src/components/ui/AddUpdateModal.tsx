@@ -1,21 +1,30 @@
 import { useState, type SetStateAction } from "react";
 import Input from "./Input";
-import type { BookStatus } from "../../features/books/bookTypes";
+import type { Book, BookStatus } from "../../features/books/bookTypes";
 import Button from "./Button";
 import { useAppContext } from "../../hooks/useAppContext";
 
 type AddUpdateModalTypes = {
   setIsModalOpen: React.Dispatch<SetStateAction<boolean>>;
+  editingBook?: Book | null;
 };
 
-function AddUpdateModal({ setIsModalOpen }: AddUpdateModalTypes) {
-  const { addBook } = useAppContext();
-  const [titleValue, setTitleValue] = useState<string>("");
-  const [authorValue, setAuthorValue] = useState<string>("");
-  const [categoryValue, setCategoryValue] = useState<string>("");
-  const [statusValue, setStatusValue] = useState<BookStatus>("to-read");
-  const [ratingValue, setRatingValue] = useState<number>(5);
-  const [favoriteValue, setFavoriteValue] = useState<boolean>(false);
+function AddUpdateModal({ setIsModalOpen, editingBook }: AddUpdateModalTypes) {
+  const { addBook, updateBook } = useAppContext();
+  const [titleValue, setTitleValue] = useState(editingBook?.title ?? "");
+  const [authorValue, setAuthorValue] = useState(editingBook?.author ?? "");
+  const [categoryValue, setCategoryValue] = useState(
+    editingBook?.category ?? "",
+  );
+  const [statusValue, setStatusValue] = useState<BookStatus>(
+    editingBook?.status ?? "to-read",
+  );
+  const [ratingValue, setRatingValue] = useState<number>(
+    editingBook?.rating ?? 5,
+  );
+  const [favoriteValue, setFavoriteValue] = useState<boolean>(
+    editingBook?.isFavorite ?? false,
+  );
 
   const [titleError, setTitleError] = useState<boolean>(false);
   const [authorError, setAuthorError] = useState<boolean>(false);
@@ -34,25 +43,30 @@ function AddUpdateModal({ setIsModalOpen }: AddUpdateModalTypes) {
 
     if (Object.values(errors).some(Boolean)) return;
 
-    const newBook = {
-      id: crypto.randomUUID(),
+    const bookData = {
+      id: editingBook ? editingBook.id : crypto.randomUUID(),
       title: titleValue.trim(),
       author: authorValue.trim(),
       category: categoryValue.trim(),
       status: statusValue,
       rating: ratingValue,
       isFavorite: favoriteValue,
-      createdAt: new Date().toISOString(),
+      createdAt: editingBook ? editingBook.createdAt : new Date().toISOString(),
     };
-
-    addBook(newBook);
+    if (editingBook) {
+      updateBook(bookData);
+    } else {
+      addBook(bookData);
+    }
 
     setIsModalOpen(false);
   }
 
   return (
     <div className="flex flex-col gap-10 w-md px-5 py-8">
-      <h1 className="text-3xl font-semibold">Add Book</h1>
+      <h1 className="text-3xl font-semibold">
+        {editingBook ? "Update Book" : "Add Book"}
+      </h1>
       <div className="flex flex-col gap-4">
         <div className="flex flex-row gap-5 items-start justify-start w-full">
           <label htmlFor="title" className="text-xl font-semibold w-3/8 mt-2">
@@ -186,7 +200,7 @@ function AddUpdateModal({ setIsModalOpen }: AddUpdateModalTypes) {
           typeName="addBookModal"
           onClick={handleSubmit}
         >
-          Add Book
+          {editingBook ? "Update Book" : "Add Book"}
         </Button>
       </div>
     </div>

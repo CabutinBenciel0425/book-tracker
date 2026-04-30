@@ -7,6 +7,7 @@ import Input from "../../components/ui/Input";
 import BookItem from "./BookItem";
 import AddUpdateModal from "../../components/ui/AddUpdateModal";
 import BaseModal from "../../components/ui/BaseModal";
+import type { Book } from "./bookTypes";
 
 export type FilterTypes = "all" | "reading" | "completed" | "to-read";
 
@@ -15,6 +16,7 @@ export type SortOptionTypes = "recent" | "oldest";
 function BooksPage() {
   const { state } = useAppContext();
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [editingBook, setEditingBook] = useState<Book | null>(null);
   const [searchInput, setSearchInput] = useState<string>("");
   const [filterType, setFilterType] = useState<FilterTypes>("all");
 
@@ -28,6 +30,12 @@ function BooksPage() {
   );
 
   function handleAddBook() {
+    setEditingBook(null);
+    setIsModalOpen(true);
+  }
+
+  function handleEditBook(book: Book) {
+    setEditingBook(book);
     setIsModalOpen(true);
   }
 
@@ -86,13 +94,16 @@ function BooksPage() {
         </div>
 
         {result.map((book) => (
-          <BookItem book={book} key={book.id} />
+          <BookItem book={book} key={book.id} onEdit={handleEditBook} />
         ))}
       </div>
 
       {isModalOpen && (
         <BaseModal onClose={() => setIsModalOpen(false)}>
-          <AddUpdateModal setIsModalOpen={setIsModalOpen} />
+          <AddUpdateModal
+            setIsModalOpen={setIsModalOpen}
+            editingBook={editingBook}
+          />
         </BaseModal>
       )}
     </div>

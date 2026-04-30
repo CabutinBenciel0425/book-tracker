@@ -1,8 +1,18 @@
+import { useAppContext } from "../../hooks/useAppContext";
 import Button from "./Button";
 
-function ActionsButton() {
+function ActionsButton({ id, onEdit }: { id: string; onEdit: () => void }) {
+  const { state } = useAppContext();
+
   const actionBtnStyle =
     "bg-transparent text-main-accent cursor-pointer text-xl hover:text-main-accent-hover";
+
+  function handleUpdateBtn() {
+    const selectedBook = state.books.find((book) => book.id === id);
+    if (!selectedBook) return;
+
+    onEdit();
+  }
   return (
     <div className="flex items-center justify-start gap-3">
       <Button
@@ -14,7 +24,7 @@ function ActionsButton() {
       <Button
         className={actionBtnStyle}
         typeName="updateBook"
-        onClick={() => console.log("update book")}
+        onClick={handleUpdateBtn}
       />
 
       <Button
