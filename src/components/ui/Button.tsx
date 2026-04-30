@@ -3,6 +3,11 @@ import { IoMdAdd } from "react-icons/io";
 import { LuPencil } from "react-icons/lu";
 import { FaRegTrashCan } from "react-icons/fa6";
 import { FaRegEye } from "react-icons/fa";
+import { TbHeart, TbHeartFilled } from "react-icons/tb";
+
+{
+  /* <IoIosStar />  <IoIosStarOutline /> */
+}
 
 type ButtonType = {
   className?: string;
@@ -15,7 +20,9 @@ type ButtonType = {
     | "updateBook"
     | "deleteBook"
     | "addBookModal"
-    | "cancelModal";
+    | "cancelModal"
+    | "favorite"
+    | "notFavorite";
   children?: string;
 };
 
@@ -29,6 +36,8 @@ function Button({ className, onClick, typeName, children }: ButtonType) {
     deleteBook: { icon: <FaRegTrashCan /> },
     addBookModal: { icon: "" },
     cancelModal: { icon: "" },
+    favorite: { icon: <TbHeartFilled /> },
+    notFavorite: { icon: <TbHeart /> },
   };
 
   return (
