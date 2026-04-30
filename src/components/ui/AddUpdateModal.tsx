@@ -81,7 +81,7 @@ function AddUpdateModal({ setIsModalOpen, editingBook }: AddUpdateModalTypes) {
                 setTitleValue(e.target.value);
                 setTitleError(false);
               }}
-              className="text-xl text-main-border hover:text-main-border-focus transition-all duration-200 ease-in cursor-pointer border-2 rounded-md outline-none focus:border-main-border-focus w-full py-1 px-2 "
+              className="text-xl text-main-border hover:text-main-border-focus transition-all duration-200 ease-in border-2 rounded-md outline-none focus:border-main-border-focus w-full py-1 px-2 "
             />
             <p className="text-red-500 text-sm mt-1 min-h-5">
               {titleError && "* Title of the book is required"}
@@ -102,7 +102,7 @@ function AddUpdateModal({ setIsModalOpen, editingBook }: AddUpdateModalTypes) {
                 setAuthorValue(e.target.value);
                 setAuthorError(false);
               }}
-              className="text-xl text-main-border hover:text-main-border-focus transition-all duration-200 ease-in cursor-pointer border-2 rounded-md outline-none focus:border-main-border-focus w-full  py-1 px-2"
+              className="text-xl text-main-border hover:text-main-border-focus transition-all duration-200 ease-in border-2 rounded-md outline-none focus:border-main-border-focus w-full  py-1 px-2"
             />
             <p className="text-red-500 text-sm mt-1 min-h-5">
               {authorError && "* Author of the book is required"}
@@ -126,7 +126,7 @@ function AddUpdateModal({ setIsModalOpen, editingBook }: AddUpdateModalTypes) {
                 setCategoryValue(e.target.value);
                 setCategoryError(false);
               }}
-              className="text-xl text-main-border hover:text-main-border-focus transition-all duration-200 ease-in cursor-pointer border-2 rounded-md outline-none focus:border-main-border-focus w-full py-1 px-2"
+              className="text-xl text-main-border hover:text-main-border-focus transition-all duration-200 ease-in border-2 rounded-md outline-none focus:border-main-border-focus w-full py-1 px-2"
             />
             <p className="text-red-500 text-sm mt-1 min-h-5">
               {categoryError && "* Category of the book is required"}
@@ -143,7 +143,7 @@ function AddUpdateModal({ setIsModalOpen, editingBook }: AddUpdateModalTypes) {
             id="status"
             value={statusValue}
             onChange={(e) => setStatusValue(e.target.value as BookStatus)}
-            className="text-xl text-main-border hover:text-main-border-focus transition-all duration-200 ease-in cursor-pointer border-2 rounded-md outline-none w-fit py-1 px-2"
+            className="text-xl text-main-border hover:text-main-border-focus transition-all duration-200 ease-in border-2 rounded-md outline-none w-fit py-1 px-2"
           >
             <option value="to-read">To Read</option>
             <option value="reading">Reading</option>
@@ -160,7 +160,7 @@ function AddUpdateModal({ setIsModalOpen, editingBook }: AddUpdateModalTypes) {
             id="rating"
             value={ratingValue}
             onChange={(e) => setRatingValue(Number(e.target.value))}
-            className="text-xl text-main-border hover:text-main-border-focus transition-all duration-200 ease-in cursor-pointer border-2 rounded-md outline-none w-fit py-1 px-2"
+            className="text-xl text-main-border hover:text-main-border-focus transition-all duration-200 ease-in border-2 rounded-md outline-none w-fit py-1 px-2"
           >
             <option value={1}>1</option>
             <option value={2}>2</option>
@@ -179,7 +179,7 @@ function AddUpdateModal({ setIsModalOpen, editingBook }: AddUpdateModalTypes) {
             id="favorite"
             value={favoriteValue ? "true" : "false"}
             onChange={(e) => setFavoriteValue(e.target.value === "true")}
-            className="text-xl text-main-border hover:text-main-border-focus transition-all duration-200 ease-in cursor-pointer border-2 rounded-md outline-none w-fit py-1 px-2"
+            className="text-xl text-main-border hover:text-main-border-focus transition-all duration-200 ease-in border-2 rounded-md outline-none w-fit py-1 px-2"
           >
             <option value="true">Yes</option>
             <option value="false">No</option>
@@ -191,7 +191,7 @@ function AddUpdateModal({ setIsModalOpen, editingBook }: AddUpdateModalTypes) {
         <Button
           className="border-2 border-main-accent bg-transparent text-main-accent text-lg rounded-md cursor-pointer px-2 py-1 hover:bg-blue-200 transition-all duration-200 ease-in"
           onClick={() => setIsModalOpen(false)}
-          typeName="cancelBookModal"
+          typeName="cancelModal"
         >
           Cancel
         </Button>

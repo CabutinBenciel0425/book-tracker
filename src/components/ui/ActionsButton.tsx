@@ -2,7 +2,7 @@ import { useAppContext } from "../../hooks/useAppContext";
 import Button from "./Button";
 
 function ActionsButton({ id, onEdit }: { id: string; onEdit: () => void }) {
-  const { state } = useAppContext();
+  const { state, openConfirmModal } = useAppContext();
 
   const actionBtnStyle =
     "bg-transparent text-main-accent cursor-pointer text-xl hover:text-main-accent-hover";
@@ -12,6 +12,10 @@ function ActionsButton({ id, onEdit }: { id: string; onEdit: () => void }) {
     if (!selectedBook) return;
 
     onEdit();
+  }
+
+  function handleDeleteBtn() {
+    openConfirmModal("delete", id);
   }
   return (
     <div className="flex items-center justify-start gap-3">
@@ -30,7 +34,7 @@ function ActionsButton({ id, onEdit }: { id: string; onEdit: () => void }) {
       <Button
         className={actionBtnStyle}
         typeName="deleteBook"
-        onClick={() => console.log("delete book")}
+        onClick={handleDeleteBtn}
       />
     </div>
   );

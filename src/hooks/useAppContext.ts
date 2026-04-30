@@ -48,6 +48,22 @@ export function useAppContext() {
     });
   }
 
+  function openConfirmModal(type: "delete" | "clear", payload?: string) {
+    dispatch({
+      type: "OPEN_CONFIRM_MODAL",
+      payload: {
+        type,
+        payload,
+      },
+    });
+  }
+
+  function closeConfirmModal() {
+    dispatch({
+      type: "CLOSE_CONFIRM_MODAL",
+    });
+  }
+
   return {
     state,
     dispatch,
@@ -56,5 +72,7 @@ export function useAppContext() {
     updateBook,
     toggleFavorite,
     toggleRating,
+    openConfirmModal,
+    closeConfirmModal,
   };
 }

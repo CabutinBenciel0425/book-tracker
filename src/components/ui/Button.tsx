@@ -15,7 +15,7 @@ type ButtonType = {
     | "updateBook"
     | "deleteBook"
     | "addBookModal"
-    | "cancelBookModal";
+    | "cancelModal";
   children?: string;
 };
 
@@ -28,7 +28,7 @@ function Button({ className, onClick, typeName, children }: ButtonType) {
     updateBook: { icon: <LuPencil /> },
     deleteBook: { icon: <FaRegTrashCan /> },
     addBookModal: { icon: "" },
-    cancelBookModal: { icon: "" },
+    cancelModal: { icon: "" },
   };
 
   return (

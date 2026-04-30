@@ -42,6 +42,26 @@ export function reducer(state: AppState, action: Action): AppState {
         ),
       };
 
+    case "OPEN_CONFIRM_MODAL":
+      return {
+        ...state,
+        confirmModal: {
+          isOpen: true,
+          type: action.payload.type,
+          payload: action.payload.payload,
+        },
+      };
+
+    case "CLOSE_CONFIRM_MODAL":
+      return {
+        ...state,
+        confirmModal: {
+          isOpen: false,
+          type: null,
+          payload: undefined,
+        },
+      };
+
     default:
       return state;
   }

@@ -6,6 +6,11 @@ import { AppContext } from "./AppContext";
 
 const initialState: AppState = {
   books: mockBooks,
+  confirmModal: {
+    isOpen: false,
+    type: null,
+    payload: undefined,
+  },
 };
 
 export function AppProvider({ children }: { children: React.ReactNode }) {
