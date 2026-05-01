@@ -8,7 +8,7 @@ import MiniQoute from "../ui/MiniQoute";
 
 function Sidebar() {
   return (
-    <aside className="bg-bg-sidebar text-neutral-200 flex flex-col gap-10 w-80">
+    <aside className="bg-[#eeeeee] text-main-accent flex flex-col gap-10 w-80">
       <Logo />
       <nav>
         <ul className="flex flex-col items-start justify-center text-xl ml-15 gap-3">
@@ -16,10 +16,10 @@ function Sidebar() {
             <NavLink
               to="/"
               className={({ isActive }) =>
-                `flex flex-row items-center gap-3 transition-all duration-200 ease-in pb-1 ${
+                `flex flex-row items-center gap-3 transition-all duration-200 ease-in pb-1 font-semibold ${
                   isActive
-                    ? "text-green-400 border-b-2 border-b-green-400 translate-x-1.5"
-                    : "text-neutral-100 border-b-2 border-b-transparent"
+                    ? "text-green-700 border-b-2 border-b-green-700 translate-x-1.5"
+                    : "text-main-accent border-b-2 border-b-transparent"
                 }`
               }
             >
@@ -31,10 +31,10 @@ function Sidebar() {
             <NavLink
               to="/books"
               className={({ isActive }) =>
-                `flex flex-row items-center gap-3 transition-all duration-200 ease-in pb-1 ${
+                `flex flex-row items-center gap-3 transition-all duration-200 ease-in pb-1 font-semibold ${
                   isActive
-                    ? "text-green-400 border-b-2 border-b-green-400 translate-x-1.5"
-                    : "text-neutral-100 border-b-2 border-b-transparent"
+                    ? "text-green-700 border-b-2 border-b-green-700 translate-x-1.5"
+                    : "text-main-accent border-b-2 border-b-transparent"
                 }`
               }
             >
@@ -46,10 +46,10 @@ function Sidebar() {
             <NavLink
               to="/favorites"
               className={({ isActive }) =>
-                `flex flex-row items-center gap-3 transition-all duration-200 ease-in pb-1 ${
+                `flex flex-row items-center gap-3 transition-all duration-200 ease-in pb-1 font-semibold ${
                   isActive
-                    ? "text-green-400 border-b-2 border-b-green-400 translate-x-1.5"
-                    : "text-neutral-100 border-b-2 border-b-transparent"
+                    ? "text-green-700 border-b-2 border-b-green-700 translate-x-1.5"
+                    : "text-main-accent border-b-2 border-b-transparent"
                 }`
               }
             >
@@ -61,10 +61,10 @@ function Sidebar() {
             <NavLink
               to="/categories"
               className={({ isActive }) =>
-                `flex flex-row items-center gap-3 transition-all duration-200 ease-in pb-1 ${
+                `flex flex-row items-center gap-3 transition-all duration-200 ease-in pb-1 font-semibold ${
                   isActive
-                    ? "text-green-400 border-b-2 border-b-green-400 translate-x-1.5"
-                    : "text-neutral-100 border-b-2 border-b-transparent"
+                    ? "text-green-700 border-b-2 border-b-green-700 translate-x-1.5"
+                    : "text-main-accent border-b-2 border-b-transparent"
                 }`
               }
             >
@@ -76,10 +76,10 @@ function Sidebar() {
             <NavLink
               to="/stats"
               className={({ isActive }) =>
-                `flex flex-row items-center gap-3 transition-all duration-200 ease-in pb-1 ${
+                `flex flex-row items-center gap-3 transition-all duration-200 ease-in pb-1 font-semibold ${
                   isActive
-                    ? "text-green-400 border-b-2 border-b-green-400 translate-x-1.5"
-                    : "text-neutral-100 border-b-2 border-b-transparent"
+                    ? "text-green-700 border-b-2 border-b-green-700 translate-x-1.5"
+                    : "text-main-accent border-b-2 border-b-transparent"
                 }`
               }
             >
@@ -91,10 +91,10 @@ function Sidebar() {
             <NavLink
               to="/settings"
               className={({ isActive }) =>
-                `flex flex-row items-center gap-3 transition-all duration-200 ease-in pb-1 ${
+                `flex flex-row items-center gap-3 transition-all duration-200 ease-in pb-1 font-semibold ${
                   isActive
-                    ? "text-green-400 border-b-2 border-b-green-400 translate-x-1.5"
-                    : "text-neutral-100 border-b-2 border-b-transparent"
+                    ? "text-green-700 border-b-2 border-b-green-700 translate-x-1.5"
+                    : "text-main-accent border-b-2 border-b-transparent"
                 }`
               }
             >

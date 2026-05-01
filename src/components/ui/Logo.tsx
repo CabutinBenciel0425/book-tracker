@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 function Logo() {
   return (
     <Link
-      className="flex flex-row gap-2 text-neutral-100 text-2xl items-center justify-center px-10 py-5"
+      className="flex flex-row gap-2 text-main-accent text-2xl items-center justify-center px-10 py-5"
       to="/"
     >
       <FcReadingEbook className="text-6xl" />

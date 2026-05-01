@@ -7,6 +7,7 @@ import CategoriesPage from "../features/categories/CategoriesPage";
 import StatsPage from "../features/stats/StatsPage";
 import SettingsPage from "../features/settings/SettingsPage";
 import BooksPage from "../features/books/BooksPage";
+import BookDetails from "../features/books/BookDetails";
 
 function App() {
   return (
@@ -15,6 +16,7 @@ function App() {
         <Route element={<Layout />}>
           <Route path="/" element={<DashboardPage />} />
           <Route path="/books" element={<BooksPage />} />
+          <Route path="/books/:id" element={<BookDetails />} />
           <Route path="/favorites" element={<FavoritesPage />} />
           <Route path="/categories" element={<CategoriesPage />} />
           <Route path="/stats" element={<StatsPage />} />

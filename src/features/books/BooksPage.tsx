@@ -40,7 +40,7 @@ function BooksPage() {
   }
 
   return (
-    <div className="w-full h-full flex flex-col gap-15">
+    <div className="w-full h-full flex flex-col gap-15 items-center">
       <div className="w-full flex flex-row items-center justify-between">
         <div className="px-5 flex flex-col gap-2">
           <h1 className="text-3xl font-semibold">My Books</h1>
@@ -72,7 +72,7 @@ function BooksPage() {
         </div>
       </div>
 
-      <div>
+      <div className="w-4/6 flex items-center justify-center">
         <Filters
           setFilterType={setFilterType}
           setSortOption={setSortOption}
@@ -82,14 +82,11 @@ function BooksPage() {
         />
       </div>
 
-      <div className="flex flex-col">
-        <div className="grid grid-cols-[60px_2fr_1.5fr_1fr_1fr_1fr_120px] text-sm text-gray-500 px-4 gap-5">
+      <div className="w-full flex flex-col items-center justify-center">
+        <div className="grid w-4/6 grid-cols-[75px_2fr__1fr_120px] text-sm text-gray-500 px-4 gap-5">
           <span></span>
           <span>Book</span>
-          <span>Author</span>
-          <span>Category</span>
           <span>Status</span>
-          <span>Rating</span>
           <span>Actions</span>
         </div>
 

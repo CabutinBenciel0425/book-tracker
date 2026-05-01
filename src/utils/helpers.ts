@@ -11,3 +11,15 @@ export function capitalizeFirstLetter(str: string) {
   }
   return str;
 }
+
+export function formatDate(str: string) {
+  const timestamp = new Date(str);
+
+  if (isNaN(timestamp.getTime())) return "Invalid date";
+
+  return timestamp.toLocaleString(undefined, {
+    month: "long",
+    day: "numeric",
+    year: "numeric",
+  });
+}

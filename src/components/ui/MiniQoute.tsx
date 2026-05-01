@@ -23,7 +23,7 @@ function MiniQuote() {
 
   return (
     <div className="h-full w-full flex flex-col justify-end items-center gap-4 p-2">
-      <div className="border border-white p-3 text-center flex flex-col items-center justify-between rounded-md min-h-70">
+      <div className="border-2 border-main-accent p-3 text-center flex flex-col items-center justify-between rounded-md min-h-70">
         <BiSolidQuoteAltLeft className="text-4xl mb-2 h-2/6" />
 
         <AnimatePresence mode="wait">

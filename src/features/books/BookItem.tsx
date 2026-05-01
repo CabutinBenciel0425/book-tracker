@@ -1,6 +1,5 @@
 import ActionsButton from "../../components/ui/ActionsButton";
 import BookStatus from "../../components/ui/BookStatus";
-import Rating from "../../components/ui/Rating";
 import type { Book } from "./bookTypes";
 
 function BookItem({
@@ -12,7 +11,7 @@ function BookItem({
 }) {
   return (
     <div
-      className="border-b border-b-main-border w-full rounded-sm py-2 grid grid-cols-[60px_2fr_1.5fr_1fr_1fr_1fr_120px] px-4 gap-5 hover:bg-blue-100 transition-all duration-200 ease-in"
+      className="border-b border-b-main-border w-4/6  py-2 grid grid-cols-[60px_2fr_1fr_120px] px-8 gap-5 hover:bg-blue-100 transition-all duration-200 ease-in"
       key={book.id}
     >
       {/* image */}
@@ -26,22 +25,22 @@ function BookItem({
       </div>
 
       {/* author */}
-      <div className="flex items-center justify-start">
+      {/* <div className="flex items-center justify-start">
         <p className="">{book.author}</p>
-      </div>
+      </div> */}
 
       {/* category */}
-      <div className="flex items-center justify-start">
+      {/* <div className="flex items-center justify-start">
         <p className="">{book.category}</p>
-      </div>
+      </div> */}
 
       {/* status */}
       <BookStatus status={book.status} />
 
       {/* rating */}
-      <div className="flex items-center justify-start">
+      {/* <div className="flex items-center justify-start">
         <Rating id={book.id} />
-      </div>
+      </div> */}
 
       {/* actionButtons */}
       <ActionsButton id={book.id} onEdit={() => onEdit(book)} />

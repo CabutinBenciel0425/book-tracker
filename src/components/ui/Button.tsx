@@ -5,10 +5,6 @@ import { FaRegTrashCan } from "react-icons/fa6";
 import { FaRegEye } from "react-icons/fa";
 import { TbHeart, TbHeartFilled } from "react-icons/tb";
 
-{
-  /* <IoIosStar />  <IoIosStarOutline /> */
-}
-
 type ButtonType = {
   className?: string;
   onClick?: () => void;
@@ -42,7 +38,7 @@ function Button({ className, onClick, typeName, children }: ButtonType) {
 
   return (
     <button className={className} onClick={onClick}>
-      <span>{type[typeName].icon}</span>
+      <span className="text-2xl">{type[typeName].icon}</span>
       <span>{children}</span>
     </button>
   );

@@ -35,7 +35,7 @@ function Filters({
   }
 
   return (
-    <div className="flex flex-row justify-between items-center gap-4 text-main-accent w-full px-60">
+    <div className="flex flex-row items-center justify-center gap-20 text-main-accent w-full ">
       <div className="flex flex-row items-center justify-around gap-10">
         {filterButtons.map((type) => (
           <Button
