@@ -3,6 +3,7 @@ import type { Book } from "./../features/books/bookTypes";
 
 export interface AppState {
   books: Book[];
+  isLoading: boolean;
   confirmModal: {
     isOpen: boolean;
     type: "delete" | "clear" | null;
@@ -15,6 +16,7 @@ export type Action =
   | { type: "DELETE_BOOK"; payload: string }
   | { type: "UPDATE_BOOK"; payload: Book }
   | { type: "TOGGLE_FAVORITE"; payload: string }
+  | { type: "SET_LOADING"; payload: boolean }
   | { type: "TOGGLE_RATING"; payload: { id: string; rating: number } }
   | {
       type: "OPEN_CONFIRM_MODAL";

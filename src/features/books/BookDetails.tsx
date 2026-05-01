@@ -1,22 +1,36 @@
 import { FaChevronLeft } from "react-icons/fa";
 import ActionsButton from "../../components/ui/ActionsButton";
 import { useNavigate, useParams } from "react-router-dom";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useAppContext } from "../../hooks/useAppContext";
 import BaseModal from "../../components/ui/BaseModal";
 import AddUpdateModal from "../../components/ui/AddUpdateModal";
 import Rating from "../../components/ui/Rating";
 import { formatDate } from "../../utils/helpers";
 import BookStatus from "../../components/ui/BookStatus";
+import NoBooksFound from "../../components/ui/NoBooksFound";
+import Loader from "../../components/ui/Loader";
 
 function BookDetails() {
   const { state } = useAppContext();
+  const [loadingBook, setLoadingBook] = useState(true);
   const navigate = useNavigate();
   const { id } = useParams();
   const [isModalOpen, setIsModalOpen] = useState(false);
   const selectedBook = state.books.find((book) => book.id === id);
 
-  if (!id || !selectedBook) return <div>Book not Found!</div>;
+  useEffect(() => {
+    const timer = setTimeout(() => setLoadingBook(false), 600);
+    return () => clearTimeout(timer);
+  }, []);
+
+  if (loadingBook)
+    return (
+      <div className="w-full h-full flex items-center justify-center">
+        <Loader />
+      </div>
+    );
+  if (!id || !selectedBook) return <NoBooksFound />;
 
   console.log(id);
 
@@ -75,7 +89,7 @@ function BookDetails() {
           </div>
 
           <div className="w-3/8 flex flex-row items-center justify-between">
-            <span className="font-semibold">Category: </span>
+            <span className="font-semibold">Rating: </span>
             <Rating starLength={5} id={id} />
           </div>
         </div>

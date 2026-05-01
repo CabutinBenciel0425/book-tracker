@@ -36,6 +36,23 @@
     align-items: center;
     justify-content: center;
   }
+
+  .loader {
+    width: 4rem;
+    height: 4rem;
+    border-radius: 50%;
+    box-sizing: border-box;
+    border-top: 8px solid #003554;
+    border-left: 8px solid #003554;
+    border-right: 8px solid #ff00;
+    animation: loader 0.7s infinite linear;
+  }
+
+  @keyframes loader {
+    to {
+      transform: rotate(360deg);
+    }
+  }
 }
 
 @theme {

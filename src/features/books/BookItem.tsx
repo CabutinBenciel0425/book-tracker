@@ -24,23 +24,8 @@ function BookItem({
         <p className="font-semibold text-xl">{book.title}</p>
       </div>
 
-      {/* author */}
-      {/* <div className="flex items-center justify-start">
-        <p className="">{book.author}</p>
-      </div> */}
-
-      {/* category */}
-      {/* <div className="flex items-center justify-start">
-        <p className="">{book.category}</p>
-      </div> */}
-
       {/* status */}
       <BookStatus status={book.status} />
-
-      {/* rating */}
-      {/* <div className="flex items-center justify-start">
-        <Rating id={book.id} />
-      </div> */}
 
       {/* actionButtons */}
       <ActionsButton id={book.id} onEdit={() => onEdit(book)} />

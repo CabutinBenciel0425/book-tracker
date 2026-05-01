@@ -4,10 +4,10 @@ import { useFilter } from "../../hooks/useFilter";
 import Button from "../../components/ui/Button";
 import Filters from "../../components/ui/Filters";
 import Input from "../../components/ui/Input";
-import BookItem from "./BookItem";
 import AddUpdateModal from "../../components/ui/AddUpdateModal";
 import BaseModal from "../../components/ui/BaseModal";
 import type { Book } from "./bookTypes";
+import BookList from "./BookList";
 
 export type FilterTypes = "all" | "reading" | "completed" | "to-read";
 
@@ -82,18 +82,7 @@ function BooksPage() {
         />
       </div>
 
-      <div className="w-full flex flex-col items-center justify-center">
-        <div className="grid w-4/6 grid-cols-[75px_2fr__1fr_120px] text-sm text-gray-500 px-4 gap-5">
-          <span></span>
-          <span>Book</span>
-          <span>Status</span>
-          <span>Actions</span>
-        </div>
-
-        {result.map((book) => (
-          <BookItem book={book} key={book.id} onEdit={handleEditBook} />
-        ))}
-      </div>
+      <BookList result={result} onEditBook={handleEditBook} />
 
       {isModalOpen && (
         <BaseModal onClose={() => setIsModalOpen(false)}>

@@ -62,6 +62,12 @@ export function reducer(state: AppState, action: Action): AppState {
         },
       };
 
+    case "SET_LOADING":
+      return {
+        ...state,
+        isLoading: action.payload,
+      };
+
     default:
       return state;
   }

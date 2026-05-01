@@ -11,24 +11,30 @@ export function useAppContext() {
   const { state, dispatch } = context;
 
   function addBook(newBook: Book) {
+    dispatch({ type: "SET_LOADING", payload: true });
     dispatch({
       type: "ADD_BOOK",
       payload: newBook,
     });
+    setTimeout(() => dispatch({ type: "SET_LOADING", payload: false }));
   }
 
   function deleteBook(id: string) {
+    dispatch({ type: "SET_LOADING", payload: true });
     dispatch({
       type: "DELETE_BOOK",
       payload: id,
     });
+    setTimeout(() => dispatch({ type: "SET_LOADING", payload: false }));
   }
 
   function updateBook(book: Book) {
+    dispatch({ type: "SET_LOADING", payload: true });
     dispatch({
       type: "UPDATE_BOOK",
       payload: book,
     });
+    setTimeout(() => dispatch({ type: "SET_LOADING", payload: false }));
   }
 
   function toggleFavorite(id: string) {

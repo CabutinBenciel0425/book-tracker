@@ -6,6 +6,7 @@ import { AppContext } from "./AppContext";
 
 const initialState: AppState = {
   books: mockBooks,
+  isLoading: false,
   confirmModal: {
     isOpen: false,
     type: null,
